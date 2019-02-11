@@ -1,0 +1,21 @@
+
+CC=gcc
+
+FLAGS=-Wall
+
+llist.o:  list.h llist.c
+	$(CC) $(FLAGS) -c llist.c
+
+sq.o: llist.o sq.h sq.c
+	$(CC) $(FLAGS) -c sqw.c
+
+driver: driver.c sq.o 
+	$(CC) $(FLAGS) driver.c sq.o llist.o -lc -o driver
+
+stress: stress.c sq.o 
+	$(CC) $(FLAGS) stress.c sq.o llist.o -lc -o stress
+
+clean:
+	rm -f *.o driver
+
+
